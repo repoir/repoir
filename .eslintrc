@@ -25,6 +25,9 @@
             "error",
             "unix"
         ],
+		"no-unused-vars": [
+			"error", { "vars": "all", "args": "none" }
+		],
         "quotes": [
             "error",
             "single"

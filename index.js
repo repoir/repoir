@@ -7,4 +7,4 @@ program
     .option('-r, --ruleset <username>', 'The ruleset config')
     .parse(process.argv);
 
-require('./src')(program);
+require('./dist').default(program);
