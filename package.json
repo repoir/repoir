@@ -25,6 +25,7 @@
   "homepage": "https://github.com/wookets/repoir#readme",
   "devDependencies": {
     "eslint": "3.15.0",
+    "eslint-plugin-react": "6.9.0",
     "jest": "18.1.0"
   },
   "dependencies": {
