@@ -1,0 +1,10 @@
+{
+
+	"npm-scripts": [
+		"build",
+		"clean",
+		"lint",
+		"test"
+	]
+
+}
