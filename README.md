@@ -17,6 +17,10 @@ npm i -g repoir
 repoir
 `
 
+## cli 
+
+
+
 ## api
 
 You use repoir in two ways. 

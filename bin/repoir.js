@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+// this file merely passes cli args to the src/cli.js
+
 var program = require('commander');
 
 program
