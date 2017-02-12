@@ -3,8 +3,8 @@
 var program = require('commander');
 
 program
-    .version(require('./package.json').version)
+    .version(require('../package.json').version)
     .option('-r, --ruleset <username>', 'The ruleset config')
     .parse(process.argv);
 
-require('./dist').default(program);
+require('../dist/cli').default(program);

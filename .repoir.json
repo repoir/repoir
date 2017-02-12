@@ -1,10 +1,11 @@
 {
 
-	"npm-scripts": [
-		"build",
-		"clean",
-		"lint",
-		"test"
-	]
-
+	"rules": {
+		"npm-scripts": [
+			"build",
+			"clean",
+			"lint",
+			"test"
+		]
+	}
 }

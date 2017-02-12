@@ -2,9 +2,9 @@
   "name": "repoir",
   "version": "0.0.1",
   "description": "Repo repair",
-  "main": "index.js",
+  "main": "./bin/repoir.js",
   "bin": {
-    "repoir": "./index.js"
+    "repoir": "./bin/repoir.js"
   },
   "scripts": {
     "build": "babel src --out-dir dist --ignore spec.js,test.js",

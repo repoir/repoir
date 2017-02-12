@@ -1,7 +1,9 @@
 
-# Welcome to Repoir
+# Repoir
 
-This tool will help you define a ruleset that you can use to grade, fix, report issues in repos. 
+Repoir = Repository report and repair tool. 
+
+This project will mimic eslint in the sense that you will be able ot create your own ruleset and plugins to run against your repos to ensure they confirm to your specific needs. Sure, there are a decent amount of plugins, but this project is really about creating a harness for your own twisted shackles. 
 
 ## install
 
@@ -11,6 +13,16 @@ npm i -g repoir
 
 ## usage
 
+`
+repoir
+`
+
+## api
+
+You use repoir in two ways. 
+First, you can create or extend the ruleset. 
+Second, you can provide your own plugins that will run with other plugins based on your ruleset. 
+
 ### ruleset
 
 Rulesets are used by repoir to configure how it scans a project. 
@@ -18,7 +30,7 @@ Rulesets are used by repoir to configure how it scans a project.
 To provide your own ruleset, pass in a file with -r or --ruleset or place a .repoir config file in your project's root. 
 
 
-## modules
+## plugins
 
 ### dependencies
 
