@@ -1,42 +1,42 @@
 {
-  "name": "repoir",
-  "version": "0.0.1",
-  "description": "Repo repair",
-  "main": "./bin/repoir.js",
-  "bin": {
-    "repoir": "./bin/repoir.js"
-  },
-  "scripts": {
-    "build": "babel src --out-dir dist --ignore spec.js,test.js",
-    "build:watch": "npm run build -- --watch",
-    "clean": "rm -rf dist",
-    "lint": "eslint src",
-    "lint:fix": "npm run lint -- --fix",
-    "test": "jest",
-    "test:watch": "jest --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wookets/repoir.git"
-  },
-  "keywords": [
-    "repo",
-    "repair"
-  ],
-  "author": "wookets",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/wookets/repoir/issues"
-  },
-  "homepage": "https://github.com/wookets/repoir#readme",
-  "devDependencies": {
-    "babel-cli": "6.24.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "6.24.0",
-    "eslint": "3.18.0",
-    "eslint-plugin-jest": "19.0.1",
-    "jest": "19.0.2"
-  },
-  "dependencies": {
-    "commander": "2.9.0"
-  }
+	"name": "repoir",
+	"version": "0.0.1",
+	"description": "Repo repair",
+	"main": "./bin/repoir.js",
+	"bin": {
+		"repoir": "./bin/repoir.js"
+	},
+	"scripts": {
+		"build": "babel src --out-dir dist --ignore spec.js,test.js",
+		"build:watch": "npm run build -- --watch",
+		"clean": "rm -rf dist",
+		"lint": "eslint src",
+		"lint:fix": "npm run lint -- --fix",
+		"test": "jest",
+		"test:watch": "jest --watch"
+	},
+	"dependencies": {
+		"commander": "2.9.0"
+	},
+	"devDependencies": {
+		"babel-cli": "6.24.0",
+		"babel-plugin-transform-es2015-modules-commonjs": "6.24.0",
+		"eslint": "3.18.0",
+		"eslint-plugin-jest": "19.0.1",
+		"jest": "19.0.2"
+	},
+	"author": "wookets",
+	"bugs": {
+		"url": "https://github.com/wookets/repoir/issues"
+	},
+	"homepage": "https://github.com/wookets/repoir#readme",
+	"keywords": [
+		"repo",
+		"repair"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/wookets/repoir.git"
+	}
 }

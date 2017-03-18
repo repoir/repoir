@@ -1,4 +1,6 @@
 
+import fs from 'fs';
+
 export const meta = {
 	key: 'package-json-organizer',
 	description: 'This will organize your package.json.'
@@ -9,7 +11,7 @@ export const schema = {
     // json schema?
 };
 
-export const defaultConfig = {
+const defaultConfig = {
 	order: [
 		'name',
 		'version',
@@ -44,7 +46,7 @@ export function fix (ruleConfig) {
 			return resolve({ fixed: false });
 		}
 		const sortedPkg = sortObjectByKeyNameList(pkg, sortedKeys);
-		console.log(sortedPkg)
+		fs.writeFileSync(`${process.cwd()}/package.json`, JSON.stringify(sortedPkg, null, '\t'), 'utf8');
 		return resolve({ fixed: true });
 	});
 }
