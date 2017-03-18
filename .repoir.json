@@ -1,5 +1,8 @@
 {
-
+	"extends": "example",
+	"plugins": [
+		
+	],
 	"rules": {
 		"npm-scripts": [
 			"build",
