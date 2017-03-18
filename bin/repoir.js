@@ -6,7 +6,8 @@ var program = require('commander');
 
 program
     .version(require('../package.json').version)
-    .option('-r, --ruleset <username>', 'The ruleset config')
+	.option('-f, --fix', 'Apply fixes where possible')
+    .option('-r, --ruleset [file]', 'The ruleset config')
     .parse(process.argv);
 
 require('../dist/cli').default(program);

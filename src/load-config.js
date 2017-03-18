@@ -1,5 +1,4 @@
 
-
 // this file is responsible for 
 // 1. loading default options - e.g. repoir/.repoir - internal repoir default config
 // 2. load user options - e.g. ~/.repoir
@@ -9,17 +8,17 @@
 
 import deepAssign from './helpers/deep-assign';
 
-export default (cliOptions) => {
+export default () => {
 
 	// load extends or default extends
-	
+
 	// load default repoir config file
 	const defaultConfig = require(`${__dirname}/../.repoir`);
 
 	// load .repoir config file
 	const projectConfig = require(`${process.cwd()}/.repoir`);
 
-	// merge config files
+	// merge config files2
 	const config = deepAssign({}, defaultConfig, projectConfig);
 
 	return config;

@@ -1,7 +1,7 @@
 {
 	"extends": "example",
 	"plugins": [
-		
+		"package-json-organizer"
 	],
 	"rules": {
 		"npm-scripts": [

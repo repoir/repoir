@@ -8,12 +8,12 @@
   },
   "scripts": {
     "build": "babel src --out-dir dist --ignore spec.js,test.js",
+    "build:watch": "npm run build -- --watch",
     "clean": "rm -rf dist",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "build:watch": "npm run build -- --watch"
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -30,11 +30,11 @@
   },
   "homepage": "https://github.com/wookets/repoir#readme",
   "devDependencies": {
-    "babel-cli": "6.22.2",
-    "babel-plugin-transform-es2015-modules-commonjs": "6.22.0",
-    "eslint": "3.15.0",
+    "babel-cli": "6.24.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.24.0",
+    "eslint": "3.18.0",
     "eslint-plugin-jest": "19.0.1",
-    "jest": "18.1.0"
+    "jest": "19.0.2"
   },
   "dependencies": {
     "commander": "2.9.0"

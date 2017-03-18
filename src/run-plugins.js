@@ -1,26 +1,21 @@
 
-export default (config) => {
+export default (program, config) => {
 
-	// loop over plugins and load them
-	Object.keys(config).forEach( value => {
-		console.log(value);
+	// run plugins and pass them their config ruleset
+	const results = [];
+	Object.keys(config.plugins).forEach(function (key) {
+		let result;
+		const plugin = config.plugins[key];
+		if (program.fix) {
+			console.log('fixing', key);
+			result = plugin.fix(config.rules[key]);
+		}
+		else {
+			console.log('test', key);
+			result = plugin.test(config.rules[key]);
+		}
+		results.push(result);
 	});
-	// System.import(`./${}`)
-    // .then(some_module => {
-    //     // Use some_module
-    // })
-    // .catch(error => {
-    //     ...
-    // });
-
-	// Promise.all(['module1', 'module2', 'module3']
-    //     .map(x => System.import(x)))
-    // .then(([module1, module2, module3]) => {
-    //     // Use module1, module2, module3
-    // });
-	const result = require('./npm-scripts/report').default(config, config['npm-scripts']);
-	return result.then( errors => {
-		console.log('errors', errors);
-	});
+	return Promise.all(results);
 
 };
