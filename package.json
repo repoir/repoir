@@ -8,11 +8,11 @@
   },
   "scripts": {
     "build": "babel src --out-dir dist --ignore spec.js,test.js",
-	"clean": "rm -rf dist",
+    "clean": "rm -rf dist",
     "lint": "eslint src",
-	"lint:fix": "npm run lint -- --fix",
+    "lint:fix": "npm run lint -- --fix",
     "test": "jest",
-	"test:watch": "jest --watch",
+    "test:watch": "jest --watch",
     "build:watch": "npm run build -- --watch"
   },
   "repository": {
@@ -33,7 +33,7 @@
     "babel-cli": "6.22.2",
     "babel-plugin-transform-es2015-modules-commonjs": "6.22.0",
     "eslint": "3.15.0",
-    "eslint-plugin-react": "6.9.0",
+    "eslint-plugin-jest": "19.0.1",
     "jest": "18.1.0"
   },
   "dependencies": {

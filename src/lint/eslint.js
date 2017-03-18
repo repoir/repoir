@@ -6,6 +6,6 @@ export default (options) => {
 	console.log('Checking eslint');
 
 	fs.readFile('./eslint');
-	console.log('')
+	console.log('');
 
 };

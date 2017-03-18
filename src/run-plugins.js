@@ -3,8 +3,8 @@ export default (config) => {
 
 	// loop over plugins and load them
 	Object.keys(config).forEach( value => {
-		console.log(value)
-	})
+		console.log(value);
+	});
 	// System.import(`./${}`)
     // .then(some_module => {
     //     // Use some_module

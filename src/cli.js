@@ -10,7 +10,7 @@ import runPlugins from './run-plugins';
 
 export default (program) => {
 
-    console.log('REPOIRing your repo');
+	console.log('REPOIRing your repo');
 
 	// load config
 	const config = loadConfig();
