@@ -22,7 +22,6 @@
 		"babel-cli": "6.24.0",
 		"babel-plugin-transform-es2015-modules-commonjs": "6.24.0",
 		"eslint": "3.18.0",
-		"eslint-plugin-jest": "19.0.1",
 		"jest": "19.0.2"
 	},
 	"author": "wookets",
