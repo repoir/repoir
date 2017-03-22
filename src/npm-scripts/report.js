@@ -1,6 +1,5 @@
 
-export default function report ({pwd}, commands) {
-	
+export default function report ({ pwd }, commands) {
 	console.log('pwd', pwd);
 	console.log('commands', commands);
 	const packageJson = require(`${pwd}/package.json`);

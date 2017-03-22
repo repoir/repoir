@@ -1,5 +1,5 @@
 
-// the main execution engine
+// The main execution engine
 // 1. load configuration files
 // 2. load plugins
 // 3. run plugins (either verify or fix)
@@ -11,21 +11,17 @@ import runPlugins from './run-plugins';
 import runReport from './run-report';
 
 export default (program) => {
-
-	// load config
+	// Load config
 	const config = loadConfig();
 
-	// load plugins
+	// Load plugins
 	config.plugins = loadPlugins(config.plugins);
 
-	// run plugins (verify or fix)
-	runPlugins(program, config).then( result => {
-
-		// report results (cli or file or obj)
+	// Run plugins (verify or fix)
+	runPlugins(program, config).then(result => {
+		// Report results (cli or file or obj)
 		runReport(program, result);
-
-	}).catch( err => {
+	}).catch(err => {
 		console.log('something failed', err);
 	});
-
 };

@@ -7,8 +7,8 @@ export const meta = {
 };
 
 export const schema = {
-    // schema for config options in .repoir.json
-    // json schema?
+    // Schema for config options in .repoir.json
+    // Json schema?
 };
 
 const defaultConfig = {
@@ -33,7 +33,7 @@ export function test (ruleConfig) {
 		if (isSameOrder(pkgKeys, sortedKeys)) {
 			return resolve({ error: false });
 		}
-		return resolve({ error: true, message: 'package.json not properly ordered'});
+		return resolve({ error: true, message: 'package.json not properly ordered' });
 	});
 }
 
@@ -42,7 +42,7 @@ export function fix (ruleConfig) {
 		const pkg = require(`${process.cwd()}/package.json`);
 		const pkgKeys = Object.keys(pkg);
 		const sortedKeys = sort(pkgKeys);
-		if (isSameOrder(pkgKeys, sortedKeys)) { // if already matching, let it be
+		if (isSameOrder(pkgKeys, sortedKeys)) { // If already matching, let it be
 			return resolve({ fixed: false });
 		}
 		const sortedPkg = sortObjectByKeyNameList(pkg, sortedKeys);
@@ -53,32 +53,32 @@ export function fix (ruleConfig) {
 
 function sort (pkgKeys) {
 	const sortedKeys = JSON.parse(JSON.stringify(pkgKeys)).sort();
-	defaultConfig.order.reverse().forEach( overrideSortKey => {
+	defaultConfig.order.reverse().forEach(overrideSortKey => {
 		if (overrideSortKey === '...') return;
 		move(sortedKeys, sortedKeys.indexOf(overrideSortKey), 0);
 	});
 	return sortedKeys;
 }
 
-function sortObjectByKeyNameList(object, sortWith) {
-  var keys;
-  var sortFn;
+function sortObjectByKeyNameList (object, sortWith) {
+	let keys;
+	let sortFn;
 
-  if (typeof sortWith === 'function') {
-    sortFn = sortWith;
-  } else {
-    keys = sortWith;
-  }
-  return (keys || []).concat(Object.keys(object).sort(sortFn)).reduce(function(total, key) {
-    total[key] = object[key];
-    return total;
-  }, Object.create(null));
+	if (typeof sortWith === 'function') {
+		sortFn = sortWith;
+	} else {
+		keys = sortWith;
+	}
+	return (keys || []).concat(Object.keys(object).sort(sortFn)).reduce((total, key) => {
+		total[key] = object[key];
+		return total;
+	}, Object.create(null));
 }
 
 function move (array, from, to) {
-    array.splice(to, 0, array.splice(from, 1)[0]);
+	array.splice(to, 0, array.splice(from, 1)[0]);
 }
 
 function isSameOrder (array1, array2) {
-	return array1.length === array2.length && array1.every((v,i)=> v === array2[i]);
+	return array1.length === array2.length && array1.every((v, i) => v === array2[i]);
 }
