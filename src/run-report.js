@@ -1,4 +1,3 @@
-import util from 'util';
 import colors from 'colors';
 
 export default (program, results) => {
@@ -13,7 +12,7 @@ export default (program, results) => {
 
 				Object.keys(problem).forEach(key => {
 					if (key === 'message') return;
-					write(`\n    ${colors.gray(key)} ${colors.gray(problem[key])}`);
+					write(`\n    ${colors.gray(key)}${colors.gray(':')} ${colors.gray(problem[key])}`);
 				});
 			});
 		}
@@ -21,7 +20,7 @@ export default (program, results) => {
 		write('\n');
 	});
 
-	write('\n\n');
+	write('\n');
 };
 
 function write (message = '') {

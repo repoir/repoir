@@ -22,11 +22,16 @@
 								"healthcheck": {
 									"type": "string",
 									"enum": ["npm run lint:out && npm run test"]
+								},
+								"lint:out": {
+									"type": "string",
+									"enum": ["npm run lint -- -f checkstyle -o coverage/checkstyle.xml"]
 								}
 							},
 							"additionalProperties": true,
 							"required": [
-								"healthcheck"
+								"healthcheck",
+								"lint:out"
 							]
 						}
 					},
@@ -39,6 +44,22 @@
 					"additionalProperties": true,
 					"required": [
 						"scripts"
+					]
+				}
+			},
+			{
+				"file": ".eslintrc",
+				"schema": {
+					"type": "object",
+					"properties": {
+						"extends": {
+							"type": "string",
+							"enum": ["shop"]
+						}
+					},
+					"additionalProperties": true,
+					"required": [
+						"extends"
 					]
 				}
 			}
