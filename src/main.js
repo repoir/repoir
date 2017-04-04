@@ -21,6 +21,10 @@ export default (program) => {
 	runPlugins(program, config).then(result => {
 		// Report results (cli or file or obj)
 		runReport(program, result);
+
+		result.forEach(result => {
+			if (result.problems.length > 0) process.exit(1);
+		});
 	}).catch(err => {
 
 	});
