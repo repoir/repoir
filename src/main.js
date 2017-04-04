@@ -22,6 +22,6 @@ export default (program) => {
 		// Report results (cli or file or obj)
 		runReport(program, result);
 	}).catch(err => {
-		console.log('something failed', err);
+
 	});
 };

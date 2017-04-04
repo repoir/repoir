@@ -13,9 +13,12 @@
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "healthcheck": "hey"
   },
   "dependencies": {
+    "ajv": "^4.11.5",
+    "colors": "^1.1.2",
     "commander": "2.9.0"
   },
   "devDependencies": {

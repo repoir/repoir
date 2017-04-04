@@ -31,9 +31,9 @@ export function test (ruleConfig) {
 		const pkgKeys = Object.keys(pkg);
 		const sortedKeys = sort(pkgKeys);
 		if (isSameOrder(pkgKeys, sortedKeys)) {
-			return resolve({ error: false });
+			return resolve([]);
 		}
-		return resolve({ error: true, message: 'package.json not properly ordered' });
+		return resolve([ { message: 'package.json not properly ordered' } ]);
 	});
 }
 

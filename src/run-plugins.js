@@ -1,18 +1,20 @@
-
-export default (program, config) => {
-	// Run plugins and pass them their config ruleset
-	const results = [];
-	Object.keys(config.plugins).forEach((key) => {
-		let result;
+export default function runPlugins (program, config) {
+	return Promise.all(Object.keys(config.plugins).map(key => {
 		const plugin = config.plugins[key];
+
+		let promise;
+
 		if (program.fix) {
-			console.log('fixing', key);
-			result = plugin.fix(config.rules[key]);
-		}		else {
-			console.log('test', key);
-			result = plugin.test(config.rules[key]);
+			promise = plugin.fix(config.rules[key]);
+		} else {
+			promise = plugin.test(config.rules[key]);
 		}
-		results.push(result);
-	});
-	return Promise.all(results);
-};
+
+		return promise.then(problems => {
+			return {
+				plugin: key,
+				problems
+			};
+		});
+	}));
+}
