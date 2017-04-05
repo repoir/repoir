@@ -1,8 +1,6 @@
 import fs from 'fs';
 import Ajv from 'ajv';
 
-export const key = 'json-schema';
-
 export function test (ruleConfig) {
 	const ajv = new Ajv({ allErrors: true });
 
