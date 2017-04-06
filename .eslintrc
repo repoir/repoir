@@ -70,6 +70,11 @@
 		"space-unary-ops": "error",
 		"spaced-comment": ["error", "always"],
 		"template-tag-spacing": ["error", "always"],
-		"object-shorthand": ["error", "always"]
+		"object-shorthand": ["error", "always"],
+		"sort-imports": ["error", {
+        	"ignoreCase": false,
+        	"ignoreMemberSort": false,
+        	"memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+    	}]
     }
 }

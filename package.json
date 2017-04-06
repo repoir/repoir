@@ -12,7 +12,7 @@
     "clean": "rm -rf dist",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
-    "test": "jest",
+    "test": "jest --coverage",
     "test:watch": "jest --watch",
     "healthcheck": "hey"
   },
