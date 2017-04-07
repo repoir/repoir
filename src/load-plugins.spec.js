@@ -1,16 +1,24 @@
-
 import loadPlugins from './load-plugins';
 
-describe('load-plugins', () => {
-	const config = {
-		plugins: [
-			'package-json-organizer'
-		]
-	};
+const mockCorePlugin = jest.fn();
+const mockFoobarPlugin = jest.fn();
 
-	it('should load plugins in this repo', () => {
-		const plugins = loadPlugins(config.plugins);
-		expect(plugins).toBeDefined();
-		expect(plugins['package-json-organizer'].meta.description).toBeDefined();
+jest.mock(`${__dirname}/plugins/core-plugin`, () => {
+	return mockCorePlugin;
+}, { virtual: true });
+
+jest.mock(`${process.cwd()}/node_modules/repoir-plugin-foobar`, () => {
+	return mockFoobarPlugin;
+}, { virtual: true });
+
+describe('load-plugins', () => {
+	it('should load and return core plugin implementations', () => {
+		const plugins = loadPlugins(['core-plugin']);
+		expect(plugins).toHaveProperty('core-plugin', mockCorePlugin);
+	});
+
+	it('should load and return external plugin implementations', () => {
+		const plugins = loadPlugins(['foobar']);
+		expect(plugins).toHaveProperty('foobar', mockFoobarPlugin);
 	});
 });
