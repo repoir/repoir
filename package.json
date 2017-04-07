@@ -29,6 +29,11 @@
     "eslint": "^3.18.0",
     "jest": "^19.0.2"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  },
   "author": "repoir",
   "bugs": {
     "url": "https://github.com/repoir/repoir/issues"
