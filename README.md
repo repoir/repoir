@@ -3,7 +3,9 @@
 
 Repoir = Repository report and repair 
 
-This project follows the eslint pattern in that you will be able ot create your own ruleset and plugins to run against your repos to ensure they confirm to your specific needs. Sure, there are a decent amount of plugins, but this project is really about creating a harness for your own twisted shackles. 
+In the real world, developers are opinionated, forgetful, and tend to overthink basic file organization. Multiple this by x repositories and y developers and clouds of sadness rain down. Repoir is here to help. It's simple. Configure repoir. Run repoir to find issues. Run repoir --fix to fix issues. Then get back to coding something your future self will be proud of. 
+
+Repoir follows a plug-in architectue to allow you to re-use, create, and / or configure your own repository ruleset. 
 
 ## install
 
@@ -15,6 +17,13 @@ npm i -g repoir
 
 ```bash
 repoir
+```
+
+To fix issues.
+
+```bash
+repoir -f 
+repoir --fix
 ```
 
 To get help with cli uage, run the following.
