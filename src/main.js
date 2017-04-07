@@ -4,7 +4,7 @@ import runPlugins from './run-plugins';
 import runReport from './run-report';
 
 export default async function main (program) {
-	const config = loadConfig();
+	const config = loadConfig(program);
 	config.plugins = loadPlugins(config.plugins);
 	const result = await runPlugins(program, config);
 
