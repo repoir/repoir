@@ -1,7 +1,7 @@
 {
   "name": "repoir",
-  "version": "0.0.1",
-  "description": "Repo repair",
+  "version": "0.0.0",
+  "description": "If your repo needs a checkup, you should probably repoir it",
   "main": "./bin/repoir.js",
   "bin": {
     "repoir": "./bin/repoir.js"
@@ -13,26 +13,27 @@
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --coverage",
-    "test:watch": "jest --watch",
-    "healthcheck": "hey"
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "ajv": "^4.11.5",
     "colors": "^1.1.2",
-    "commander": "2.9.0"
+    "commander": "^2.9.0",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-plugin-transform-async-to-generator": "^6.22.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
+    "coveralls": "^2.13.0",
     "eslint": "^3.18.0",
     "jest": "^19.0.2"
   },
-  "author": "wookets",
+  "author": "repoir",
   "bugs": {
-    "url": "https://github.com/wookets/repoir/issues"
+    "url": "https://github.com/repoir/repoir/issues"
   },
-  "homepage": "https://github.com/wookets/repoir#readme",
+  "homepage": "https://github.com/repoir/repoir#readme",
   "keywords": [
     "repo",
     "repair"
@@ -40,7 +41,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wookets/repoir.git"
+    "url": "git+https://github.com/repoir/repoir.git"
   },
   "engines": {
     "node": ">=6",

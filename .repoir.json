@@ -1,68 +1,7 @@
 {
-	"extends": "example",
 	"plugins": [
 		"package-json-organizer",
 		"json-schema"
 	],
-	"rules": {
-		"npm-scripts": [
-			"build",
-			"clean",
-			"lint",
-			"test"
-		],
-		"json-schema": [
-			{
-				"file": "package.json",
-				"schema": {
-					"definitions": {
-						"scripts": {
-							"type": "object",
-							"properties": {
-								"healthcheck": {
-									"type": "string",
-									"enum": ["npm run lint:out && npm run test"]
-								},
-								"lint:out": {
-									"type": "string",
-									"enum": ["npm run lint -- -f checkstyle -o coverage/checkstyle.xml"]
-								}
-							},
-							"additionalProperties": true,
-							"required": [
-								"healthcheck",
-								"lint:out"
-							]
-						}
-					},
-					"type": "object",
-					"properties": {
-						"scripts": {
-							"$ref": "#/definitions/scripts"
-						}
-					},
-					"additionalProperties": true,
-					"required": [
-						"scripts"
-					]
-				}
-			},
-			{
-				"file": ".eslintrc",
-				"schema": {
-					"type": "object",
-					"properties": {
-						"extends": {
-							"type": "string",
-							"enum": ["shop"]
-						}
-					},
-					"additionalProperties": true,
-					"required": [
-						"extends"
-					]
-				}
-			}
-		]
-	}
+	"rules": {}
 }
