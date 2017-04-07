@@ -10,7 +10,8 @@ export const schema = {
 
 const defaultConfig = [
 	'.eslintrc',
-	'package.json'
+	'package.json',
+	'README.md'
 ];
 
 export function test (ruleConfig) {
