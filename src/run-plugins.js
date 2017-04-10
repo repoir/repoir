@@ -2,6 +2,13 @@ import Ajv from 'ajv';
 
 export default function runPlugins (program, config) {
 	return Promise.all(Object.keys(config.plugins).map(key => {
+		if (typeof config.rules[key] === 'undefined') {
+			return Promise.resolve({
+				plugin: key,
+				problems: []
+			});
+		}
+
 		const plugin = config.plugins[key];
 
 		if (typeof plugin.schema === 'object') {

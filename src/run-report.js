@@ -5,9 +5,9 @@ export default (program, results) => {
 	const problems = getProblems(results);
 
 	if (problems.length === 0) {
-		write(colors.green(colors.bold('✔ No problems were detected with your repo')));
+		write(colors.green(colors.bold('\n✔ No problems were detected with your repo!\n\n')));
 	} else {
-		write(colors.red(`\n${colors.bold('✘ Problems with your repo were detected:')}\n`));
+		write(colors.red(colors.bold('\n✘ Problems with your repo were detected:\n')));
 
 		const data = problems.map(({ plugin, message }) => {
 			return [colors.gray(plugin), message];
