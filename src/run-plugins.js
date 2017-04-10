@@ -15,9 +15,9 @@ export default function runPlugins (program, config) {
 		let promise;
 
 		if (program.fix) {
-			promise = plugin.fix(config.rules[key]);
+			promise = plugin.fix(config.rules[key], program);
 		} else {
-			promise = plugin.test(config.rules[key]);
+			promise = plugin.test(config.rules[key], program);
 		}
 
 		return promise.then(problems => {

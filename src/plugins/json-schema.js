@@ -22,20 +22,20 @@ export const schema = {
 	}
 };
 
-export function test (ruleConfig) {
+export function test (ruleConfig, program) {
 	return Promise.all(ruleConfig.map(config => {
-		return new Promise(validate.bind(null, config));
+		return new Promise(validate.bind(null, config, program));
 	}))
 	.then(results => results.reduce((accumulator, value) => {
 		return accumulator.concat(value);
 	}, []));
 }
 
-function validate (config, resolve, reject) {
+function validate (config, program, resolve, reject) {
 	const ajv = new Ajv({ allErrors: true });
 	const { file, schema } = config;
 	const loadedFile = load(file);
-	const loadedSchema = load(schema);
+	const loadedSchema = load(schema, path.dirname(program.config));
 
 	if (loadedFile.error) return resolve([loadedFile.error]);
 	if (loadedSchema.error) return resolve([loadedSchema.error]);
@@ -52,8 +52,10 @@ function validate (config, resolve, reject) {
 	resolve([]);
 }
 
-function load (file) {
-	const resolvedFile = path.resolve(file);
+function load (file, relativePath) {
+	const resolvedFile = !relativePath ?
+		path.resolve(file) :
+		path.resolve(path.relative(process.cwd(), path.join(relativePath, file)));
 
 	if (!fs.existsSync(resolvedFile)) {
 		return {

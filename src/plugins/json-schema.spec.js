@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import { test } from './json-schema';
 
 jest.mock('fs');
@@ -25,7 +26,7 @@ describe('json-schema', () => {
 		const result = await test([ {
 			file: 'foobar.json',
 			schema: 'foobar.schema.json'
-		} ]);
+		} ], { config: '/the/path' });
 
 		expect(result).toEqual([]);
 	});
@@ -47,7 +48,7 @@ describe('json-schema', () => {
 		const result = await test([ {
 			file: 'foobar.json',
 			schema: 'foobar.schema.json'
-		} ]);
+		} ], { config: '/the/path' });
 
 		expect(result).toEqual([
 			{
@@ -69,7 +70,7 @@ describe('json-schema', () => {
 		const result = await test([ {
 			file: 'foobar.json',
 			schema: 'foobar.schema.json'
-		} ]);
+		} ], { config: '/the/path' });
 
 		expect(result).toEqual([ {
 			message: 'File does not exist: foobar.json'
@@ -84,7 +85,7 @@ describe('json-schema', () => {
 		const result = await test([ {
 			file: 'foobar.json',
 			schema: 'foobar.json'
-		} ]);
+		} ], { config: '/the/path' });
 
 		expect(result).toEqual([ {
 			message: 'Invalid JSON: foobar.json'
@@ -101,7 +102,7 @@ describe('json-schema', () => {
 		const result = await test([ {
 			file: 'foobar.json',
 			schema: 'foobar.schema.json'
-		} ]);
+		} ], { config: '/the/path' });
 
 		expect(result).toEqual([ {
 			message: 'File does not exist: foobar.schema.json'
@@ -118,10 +119,23 @@ describe('json-schema', () => {
 		const result = await test([ {
 			file: 'foobar.json',
 			schema: 'foobar.schema.json'
-		} ]);
+		} ], { config: '/the/path' });
 
 		expect(result).toEqual([ {
 			message: 'Invalid JSON: foobar.schema.json'
 		} ]);
+	});
+
+	it('should resolve schemas relative to the repoir file', async () => {
+		fs.existsSync.mockReturnValue(true);
+
+		await test([ {
+			file: 'foobar.json',
+			schema: 'foobar.schema.json'
+		} ], { config: '../fake-config-dir/foobar/.repoir.json' });
+
+		const result = path.relative(process.cwd(), fs.readFileSync.mock.calls[1][0]);
+
+		expect(result).toEqual('../fake-config-dir/foobar/foobar.schema.json');
 	});
 });
