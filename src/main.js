@@ -8,9 +8,10 @@ export default async function main (program) {
 	config.plugins = loadPlugins(config.plugins);
 	const result = await runPlugins(program, config);
 
-	runReport(program, result).forEach(result => {
-		if (result.problems.length > 0) {
+	runReport(program, result);
+
+	result.forEach(result => {
+		if (result.problems.length > 0)
 			process.exit(1);
-		}
 	});
 }
