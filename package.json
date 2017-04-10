@@ -19,6 +19,7 @@
     "ajv": "^4.11.5",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
+    "glob": "^7.1.1",
     "lodash": "^4.17.4"
   },
   "devDependencies": {

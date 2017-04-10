@@ -1,7 +1,7 @@
 {
 	"plugins": [
-		"package-json-organizer",
-		"json-schema"
+		"json-schema",
+		"glob"
 	],
 	"rules": {}
 }
