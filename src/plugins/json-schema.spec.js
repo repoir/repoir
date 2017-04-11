@@ -53,12 +53,12 @@ describe('json-schema', () => {
 		expect(result).toEqual([
 			{
 				file: 'foobar.json',
-				message: ' should have required property \'foo\'',
+				message: 'foobar.json should have required property \'foo\'',
 				missingProperty: 'foo'
 			},
 			{
 				file: 'foobar.json',
-				message: ' should have required property \'bar\'',
+				message: 'foobar.json should have required property \'bar\'',
 				missingProperty: 'bar'
 			}
 		]);

@@ -13,7 +13,8 @@
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "healthcheck": "print"
   },
   "dependencies": {
     "ajv": "^4.11.5",
@@ -33,7 +34,8 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.js"
+      "src/**/*.js",
+      "bin/**/*.js"
     ]
   },
   "author": "repoir",

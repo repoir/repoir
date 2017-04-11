@@ -21,7 +21,8 @@ export const schema = {
 		exclude: {
 			type: 'array'
 		}
-	}
+	},
+	additionalProperties: false
 };
 
 export function test (ruleConfig) {

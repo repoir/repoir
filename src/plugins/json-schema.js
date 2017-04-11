@@ -1,4 +1,5 @@
 import Ajv from 'ajv';
+import { formatAjvError } from '../utils';
 import fs from 'fs';
 import path from 'path';
 
@@ -43,7 +44,7 @@ function validate (config, program, resolve, reject) {
 	if (!ajv.validate(loadedSchema.data, loadedFile.data)) {
 		resolve(ajv.errors.map(error => {
 			return Object.assign({}, error.params, {
-				message: `${error.dataPath.slice(1)} ${error.message}`,
+				message: formatAjvError(error, file),
 				file
 			});
 		}));

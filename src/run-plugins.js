@@ -1,4 +1,5 @@
 import Ajv from 'ajv';
+import { formatAjvError } from './utils';
 
 export default function runPlugins (program, config) {
 	return Promise.all(Object.keys(config.plugins).map(key => {
@@ -15,19 +16,19 @@ export default function runPlugins (program, config) {
 			const ajv = new Ajv();
 
 			if (!ajv.validate(plugin.schema, config.rules[key])) {
-				throw new Error(ajv.errors[0]);
+				return Promise.resolve({
+					plugin: key,
+					problems: ajv.errors.map(error => {
+						return {
+							message: formatAjvError(error, program.config)
+						};
+					})
+				});
 			}
 		}
 
-		let promise;
-
-		if (program.fix) {
-			promise = plugin.fix(config.rules[key], program);
-		} else {
-			promise = plugin.test(config.rules[key], program);
-		}
-
-		return promise.then(problems => {
+		return plugin.test(config.rules[key], program)
+		.then(problems => {
 			return {
 				plugin: key,
 				problems

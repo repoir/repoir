@@ -14,4 +14,6 @@ export default async function main (program) {
 		if (result.problems.length > 0)
 			process.exit(1);
 	});
+
+	process.exit(0);
 }

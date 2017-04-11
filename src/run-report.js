@@ -1,7 +1,7 @@
 import colors from 'colors';
 import { table } from 'table';
 
-export default (program, results) => {
+export default function runReport (program, results) {
 	const problems = getProblems(results);
 
 	if (problems.length === 0) {
@@ -15,9 +15,9 @@ export default (program, results) => {
 
 		write(`\n${table(data)}\n`);
 	}
-};
+}
 
-function write (message = '') {
+function write (message) {
 	process.stderr.write(message);
 }
 
