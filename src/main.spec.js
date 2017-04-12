@@ -10,10 +10,8 @@ jest.mock('./run-plugins');
 jest.mock('./run-report');
 
 describe('main', () => {
-	let _exit;
-
 	beforeEach(() => {
-		_exit = process.exit;
+		jest.spyOn(process, 'exit').mockImplementation(() => jest.fn());
 		process.exit = jest.fn();
 
 		loadConfig.mockReturnValue({ plugins: [], rules: {} });
@@ -22,7 +20,7 @@ describe('main', () => {
 	});
 
 	afterEach(() => {
-		process.exit = _exit;
+		process.exit.mockClear();
 		jest.resetAllMocks();
 	});
 

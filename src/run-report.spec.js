@@ -14,11 +14,10 @@ jest.mock('colors', () => {
 jest.mock('table');
 
 describe('runReport', () => {
-	let program, _write;
+	let program;
 
 	beforeEach(() => {
-		_write = process.stderr.write;
-		process.stderr.write = jest.fn();
+		jest.spyOn(process.stderr, 'write').mockImplementation(() => jest.fn());
 
 		program = { config: '.repoir.json' };
 
@@ -29,7 +28,7 @@ describe('runReport', () => {
 	});
 
 	afterEach(() => {
-		process.stderr.write = _write;
+		process.stderr.write.mockClear();
 		jest.resetAllMocks();
 	});
 
