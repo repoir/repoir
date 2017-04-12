@@ -39,8 +39,8 @@ describe('glob', () => {
 		});
 
 		expect(result).toEqual([
-			{ message: 'Did not find files with the include pattern specified', pattern: 'foobar.txt' },
-			{ message: 'Did not find files with the include pattern specified', pattern: 'helloworld.txt' }
+			{ message: 'No files were found matching the pattern: foobar.txt', pattern: 'foobar.txt' },
+			{ message: 'No files were found matching the pattern: helloworld.txt', pattern: 'helloworld.txt' }
 		]);
 	});
 
@@ -56,8 +56,8 @@ describe('glob', () => {
 		});
 
 		expect(result).toEqual([
-			{ message: 'error 1', pattern: 'foobar.txt' },
-			{ message: 'error 2', pattern: 'helloworld.txt' }
+			{ message: 'error 1foobar.txt', pattern: 'foobar.txt' },
+			{ message: 'error 2helloworld.txt', pattern: 'helloworld.txt' }
 		]);
 	});
 
@@ -87,8 +87,8 @@ describe('glob', () => {
 		});
 
 		expect(result).toEqual([
-			{ message: 'Found files with the exclude pattern specified', pattern: 'foobar.txt' },
-			{ message: 'Found files with the exclude pattern specified', pattern: 'helloworld.txt' }
+			{ message: 'Files were found matching the pattern: foobar.txt', pattern: 'foobar.txt' },
+			{ message: 'Files were found matching the pattern: helloworld.txt', pattern: 'helloworld.txt' }
 		]);
 	});
 
@@ -104,8 +104,8 @@ describe('glob', () => {
 		});
 
 		expect(result).toEqual([
-			{ message: 'error 1', pattern: 'foobar.txt' },
-			{ message: 'error 2', pattern: 'helloworld.txt' }
+			{ message: 'error 1foobar.txt', pattern: 'foobar.txt' },
+			{ message: 'error 2helloworld.txt', pattern: 'helloworld.txt' }
 		]);
 	});
 });

@@ -29,8 +29,8 @@ export function test (ruleConfig) {
 	const { include, exclude } = ruleConfig;
 
 	return Promise.all(compact([
-		Array.isArray(include) ? globPatterns(include, matches => matches.length > 0, 'Did not find files with the include pattern specified') : null,
-		Array.isArray(exclude) ? globPatterns(exclude, matches => matches.length === 0, 'Found files with the exclude pattern specified') : null
+		Array.isArray(include) ? globPatterns(include, matches => matches.length > 0, 'No files were found matching the pattern: ') : null,
+		Array.isArray(exclude) ? globPatterns(exclude, matches => matches.length === 0, 'Files were found matching the pattern: ') : null
 	]))
 	.then(results => {
 		const result = results.map(result => flatten(result));
@@ -42,8 +42,8 @@ function globPatterns (patterns, condition, message) {
 	return Promise.all(patterns.map(pattern => {
 		return new Promise((resolve, reject) => {
 			glob(pattern, globOptions, (err, matches) => {
-				if (err) resolve([ { message: err.message, pattern } ]);
-				else if (!condition(matches)) resolve([ { message, pattern } ]);
+				if (err) resolve([ { message: err.message + pattern, pattern } ]);
+				else if (!condition(matches)) resolve([ { message: message + pattern, pattern } ]);
 				else resolve([]);
 			});
 		});
