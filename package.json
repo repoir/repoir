@@ -2,7 +2,6 @@
   "name": "repoir",
   "version": "0.0.0",
   "description": "If your repo needs a checkup, you should probably repoir it",
-  "main": "./bin/repoir.js",
   "bin": {
     "repoir": "./bin/repoir.js"
   },
@@ -56,5 +55,10 @@
     "node": ">=6",
     "npm": ">=4",
     "yarn": ">0.21"
-  }
+  },
+  "files": [
+    "dist",
+    "bin/repoir.js",
+    ".repoir.json"
+  ]
 }
