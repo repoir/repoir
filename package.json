@@ -1,6 +1,6 @@
 {
   "name": "repoir",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "If your repo needs a checkup, you should probably repoir it",
   "bin": {
     "repoir": "./bin/repoir.js"
