@@ -13,7 +13,7 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "healthcheck": "print"
+    "healthcheck": "npm run clean && npm run lint && npm run test && npm run build"
   },
   "dependencies": {
     "ajv": "^4.11.5",

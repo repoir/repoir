@@ -3,5 +3,6 @@ language: node_js
 node_js:
   - "6"
   - "7"
+script: npm run healthcheck
 after_success: cat ./coverage/lcov.info | node_modules/.bin/coveralls
 ...
