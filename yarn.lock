@@ -821,7 +821,13 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint@^3.18.0:
+eslint-config-repoir@*:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-repoir/-/eslint-config-repoir-0.1.1.tgz#0eb6db74eb326296feb4f3083d3db95ad2352258"
+  dependencies:
+    eslint "^3.19.0"
+
+eslint@^3.18.0, eslint@^3.19.0:
   version "3.19.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.19.0.tgz#c8fc6201c7f40dd08941b87c085767386a679acc"
   dependencies:
