@@ -6,7 +6,6 @@ jest.mock('colors', () => {
 	return {
 		green: jest.fn(),
 		red: jest.fn(),
-		gray: jest.fn(),
 		bold: jest.fn()
 	};
 });
@@ -23,7 +22,6 @@ describe('runReport', () => {
 
 		colors.green.mockImplementation(msg => `green ${msg}`);
 		colors.red.mockImplementation(msg => `red ${msg}`);
-		colors.gray.mockImplementation(msg => `gray ${msg}`);
 		colors.bold.mockImplementation(msg => `bold ${msg}`);
 	});
 
@@ -56,8 +54,9 @@ describe('runReport', () => {
 		expect(process.stderr.write).toBeCalledWith('red bold \n✘ Problems with your repo were detected:\n');
 
 		expect(table).toBeCalledWith([
-			['gray foobar', 'error message 1'],
-			['gray helloworld', 'error message 2']
+			['Plugin', 'Problem'],
+			['foobar', 'error message 1'],
+			['helloworld', 'error message 2']
 		]);
 	});
 });

@@ -10,8 +10,10 @@ export default function runReport (program, results) {
 		write(colors.red(colors.bold('\n✘ Problems with your repo were detected:\n')));
 
 		const data = problems.map(({ plugin, message }) => {
-			return [colors.gray(plugin), message];
+			return [plugin, message];
 		});
+
+		data.unshift(['Plugin', 'Problem']);
 
 		write(`\n${table(data)}\n`);
 	}
