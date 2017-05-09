@@ -1,3 +1,5 @@
+// @flow
+
 import { compact, flatten } from 'lodash';
 import glob from 'glob';
 
@@ -7,7 +9,22 @@ const globOptions = {
 	follow: true
 };
 
-export const schema = {
+export const schema: {
+	additionalProperties: boolean,
+	properties: {
+		exclude: {
+			type: string
+		}, include: {
+			items: [
+				{
+					type: string
+				}
+			],
+			type: string
+		}
+	},
+	type: string
+} = {
 	type: 'object',
 	properties: {
 		include: {
@@ -25,8 +42,14 @@ export const schema = {
 	additionalProperties: false
 };
 
-export function test (ruleConfig) {
+type ruleConfigType = {
+	include: Array<string>,
+	exclude: Array<string>
+};
+
+export function test (ruleConfig: ruleConfigType) {
 	const { include, exclude } = ruleConfig;
+
 
 	return Promise.all(compact([
 		Array.isArray(include) ? globPatterns(include, matches => matches.length > 0, 'No files were found matching the pattern: ') : null,
@@ -38,10 +61,10 @@ export function test (ruleConfig) {
 	});
 }
 
-function globPatterns (patterns, condition, message) {
-	return Promise.all(patterns.map(pattern => {
-		return new Promise((resolve, reject) => {
-			glob(pattern, globOptions, (err, matches) => {
+function globPatterns (patterns: Array<string>, condition: (matches: Array<string>) => boolean, message: string): Promise<any> {
+	return Promise.all(patterns.map((pattern): Promise<Array<Object>> => {
+		return new Promise((resolve: (result: Array<Object>) => void, reject: (error: any) => void): void => {
+			glob(pattern, globOptions, (err, matches): void => {
 				if (err) resolve([ { message: err.message + pattern, pattern } ]);
 				else if (!condition(matches)) resolve([ { message: message + pattern, pattern } ]);
 				else resolve([]);

@@ -30,7 +30,7 @@ describe('runPlugins', () => {
 
 	it('should resolve results with no problems for plugins that have no rules specified', async () => {
 		const result = await runPlugins(program, {
-			plugins: { foobar: {} },
+			loadedPlugins: { foobar: {} },
 			rules: {}
 		});
 
@@ -45,7 +45,7 @@ describe('runPlugins', () => {
 		mockErrors.mockReturnValue([ { message: 'foo bar' } ]);
 
 		const result = await runPlugins(program, {
-			plugins: {
+			loadedPlugins: {
 				foobar: {
 					schema: { type: 'string' }
 				}
@@ -65,7 +65,7 @@ describe('runPlugins', () => {
 		mockValidate.mockReturnValue(true);
 
 		const result = await runPlugins(program, {
-			plugins: {
+			loadedPlugins: {
 				foobar: {
 					schema: { type: 'object' },
 					test: jest.fn().mockReturnValue(Promise.resolve([]))
@@ -84,7 +84,7 @@ describe('runPlugins', () => {
 
 	it('should run each plugins test method and resolve the results combined together', async () => {
 		const result = await runPlugins(program, {
-			plugins: {
+			loadedPlugins: {
 				foobar: {
 					test: jest.fn().mockReturnValue(Promise.resolve([
 						{ message: 'error message 1' }

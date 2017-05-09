@@ -1,8 +1,20 @@
+// @flow
+
 import colors from 'colors';
 import { merge } from 'lodash';
 import { resolve } from 'path';
 
-export default function loadConfig (program) {
+type config = {
+	plugins: Array<string>,
+	loadedPlugins: {
+		[string]: Object
+	},
+	rules: {
+		string: string
+	}
+}
+
+export default function loadConfig (program: Object): config {
 	const defaultConfig = require(`${__dirname}/../.repoir.json`);
 
 	let projectConfig;
@@ -17,6 +29,6 @@ export default function loadConfig (program) {
 	return merge({}, defaultConfig, projectConfig);
 }
 
-function write (message) {
+function write (message: string): void {
 	process.stderr.write(message);
 }

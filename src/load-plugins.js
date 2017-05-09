@@ -1,7 +1,9 @@
-export default function loadPlugins (pluginNames) {
-	const loadedPlugins = {};
+// @flow
 
-	pluginNames.forEach(pluginName => {
+export default function loadPlugins (pluginNames: Array<string>): {[string]: Object} {
+	const loadedPlugins: Object = {};
+
+	pluginNames.forEach((pluginName: string): void => {
 		try {
 			loadedPlugins[pluginName] = require(`${__dirname}/plugins/${pluginName}`);
 		} catch (err) {
