@@ -1,18 +1,10 @@
 // @flow
 
+import type { config, program } from './types.js';
 import Ajv from 'ajv';
 import { formatAjvError } from './utils';
 
-type config = {
-	loadedPlugins: {
-		[string]: Object
-	},
-	rules: {
-		string: string
-	}
-}
-
-export default function runPlugins (program: Object, config: config): Promise<Array<Object>> {
+export default function runPlugins (program: program, config: config): Promise<Array<Object>> {
 	return Promise.all(Object.keys(config.loadedPlugins).map(key => {
 		if (typeof config.rules[key] === 'undefined') {
 			return Promise.resolve({

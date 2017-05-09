@@ -1,20 +1,11 @@
 // @flow
 
+import type { config, program } from './types.js';
 import colors from 'colors';
 import { merge } from 'lodash';
 import { resolve } from 'path';
 
-type config = {
-	plugins: Array<string>,
-	loadedPlugins: {
-		[string]: Object
-	},
-	rules: {
-		string: string
-	}
-}
-
-export default function loadConfig (program: Object): config {
+export default function loadConfig (program: program): config {
 	const defaultConfig = require(`${__dirname}/../.repoir.json`);
 
 	let projectConfig;

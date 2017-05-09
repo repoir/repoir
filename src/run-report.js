@@ -1,6 +1,7 @@
 // @flow
 
 import colors from 'colors';
+import type { program } from './types.js';
 import { table } from 'table';
 
 type result = {
@@ -8,7 +9,7 @@ type result = {
 	problems: Array<any>
 }
 
-export default function runReport (program: Object, results: Array<result>): void {
+export default function runReport (program: program, results: Array<result>): void {
 	const problems = getProblems(results);
 
 	if (problems.length === 0) {
