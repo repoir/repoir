@@ -58,12 +58,7 @@ export function test (ruleConfig: Array<ruleConfigType>, program: Object) {
 	}, []));
 }
 
-type validationResult = {
-	file: string,
-	message: string
-};
-
-function validate (config, program, resolve: (result: Array<Object>) => void, reject: (error: any) => void) : void{
+function validate (config, program, resolve: (result: Array<Object>) => void, reject: (error: any) => void) : void {
 	const ajv: Ajv = new Ajv({ allErrors: true });
 	const { file, schema } = config;
 	const loadedFile = load(file);
@@ -84,7 +79,7 @@ function validate (config, program, resolve: (result: Array<Object>) => void, re
 	resolve([]);
 }
 
-function load (file: string, relativePath: string | void): Object{
+function load (file: string, relativePath: string | void): Object {
 	const resolvedFile: string = !relativePath ?
 		path.resolve(file) :
 		path.resolve(path.relative(process.cwd(), path.join(relativePath, file)));

@@ -50,7 +50,6 @@ type ruleConfigType = {
 export function test (ruleConfig: ruleConfigType) {
 	const { include, exclude } = ruleConfig;
 
-
 	return Promise.all(compact([
 		Array.isArray(include) ? globPatterns(include, matches => matches.length > 0, 'No files were found matching the pattern: ') : null,
 		Array.isArray(exclude) ? globPatterns(exclude, matches => matches.length === 0, 'Files were found matching the pattern: ') : null

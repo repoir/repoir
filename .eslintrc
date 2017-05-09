@@ -1,3 +1,7 @@
 {
+    "parser": "babel-eslint",
+    "plugins": [
+        "flowtype"
+    ],
     "extends": "repoir"
 }

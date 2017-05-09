@@ -8,7 +8,7 @@ type errorType = {
 		allowedValues: Array<string>
 	}
 };
-export function formatAjvError (error: errorType, file: string) : string{
+export function formatAjvError (error: errorType, file: string) : string {
 	let dataPath = error.dataPath;
 
 	if (dataPath[0] === '.') dataPath = dataPath.slice(1);
