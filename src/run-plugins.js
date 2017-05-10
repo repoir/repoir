@@ -1,8 +1,11 @@
+// @flow
+
+import type { config, program } from './types.js';
 import Ajv from 'ajv';
 import { formatAjvError } from './utils';
 
-export default function runPlugins (program, config) {
-	return Promise.all(Object.keys(config.plugins).map(key => {
+export default function runPlugins (program: program, config: config): Promise<Array<Object>> {
+	return Promise.all(Object.keys(config.loadedPlugins).map(key => {
 		if (typeof config.rules[key] === 'undefined') {
 			return Promise.resolve({
 				plugin: key,
@@ -10,7 +13,7 @@ export default function runPlugins (program, config) {
 			});
 		}
 
-		const plugin = config.plugins[key];
+		const plugin = config.loadedPlugins[key];
 
 		if (typeof plugin.schema === 'object') {
 			const ajv = new Ajv();

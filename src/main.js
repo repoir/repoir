@@ -1,11 +1,14 @@
+// @flow
+
 import loadConfig from './load-config';
 import loadPlugins from './load-plugins';
+import type { program } from './types.js';
 import runPlugins from './run-plugins';
 import runReport from './run-report';
 
-export default async function main (program) {
+export default async function main (program: program) {
 	const config = loadConfig(program);
-	config.plugins = loadPlugins(config.plugins);
+	config.loadedPlugins = loadPlugins(config.plugins);
 	const result = await runPlugins(program, config);
 
 	runReport(program, result);

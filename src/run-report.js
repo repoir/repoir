@@ -1,7 +1,15 @@
+// @flow
+
 import colors from 'colors';
+import type { program } from './types.js';
 import { table } from 'table';
 
-export default function runReport (program, results) {
+type result = {
+	plugin: string,
+	problems: Array<any>
+}
+
+export default function runReport (program: program, results: Array<result>): void {
 	const problems = getProblems(results);
 
 	if (problems.length === 0) {
