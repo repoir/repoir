@@ -8,5 +8,6 @@ export type config = {
 	}
 };
 export type program = {
-	config: string
+	config: string,
+	fix: boolean
 };
