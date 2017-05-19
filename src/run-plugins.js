@@ -4,7 +4,14 @@ import type { config, program } from './types.js';
 import Ajv from 'ajv';
 import { formatAjvError } from './utils';
 
-export default function runPlugins (program: program, config: config): Promise<Array<Object>> {
+type result = Array<{
+	plugin: string,
+	problems: Array<{
+		message: string
+	}>
+}>;
+
+export default function runPlugins (program: program, config: config): Promise<result> {
 	return Promise.all(Object.keys(config.loadedPlugins).map(key => {
 		if (typeof config.rules[key] === 'undefined') {
 			return Promise.resolve({
@@ -30,8 +37,15 @@ export default function runPlugins (program: program, config: config): Promise<A
 			}
 		}
 
-		return plugin.test(config.rules[key], program)
-		.then(problems => {
+		let promise;
+
+		if (program.fix) {
+			promise = plugin.fix(config.rules[key], program);
+		} else {
+			promise = plugin.test(config.rules[key], program);
+		}
+
+		return promise.then(problems => {
 			return {
 				plugin: key,
 				problems
