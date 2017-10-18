@@ -1,5 +1,6 @@
-
 # Repoir [![Build Status](https://travis-ci.org/repoir/repoir.svg?branch=master)](https://travis-ci.org/repoir/repoir) [![Coverage Status](https://coveralls.io/repos/github/repoir/repoir/badge.svg?branch=master)](https://coveralls.io/github/repoir/repoir?branch=master) [![dependencies Status](https://david-dm.org/repoir/repoir/status.svg)](https://david-dm.org/repoir/repoir)
+
+![Repoir](https://raw.githubusercontent.com/repoir/repoir/master/media/repoir-logo.png)
 
 Repoir = Repository report and repair
 
